@@ -1,0 +1,201 @@
+/* ------------------------------------------------------------------
+   Design tokens, reset and typography
+   Direction: editorial light — paper background, ink text, single
+   deep-teal accent, Fraunces display + Inter body.
+------------------------------------------------------------------- */
+
+:root {
+  --paper: #fbfaf7;
+  --ink: #1c1b1a;
+  --ink-soft: #3d3b38;
+  --muted: #6b6862;
+  --accent: #0f6b5c;
+  --accent-ink: #0b4a3d; /* darker teal for small text — AA on paper */
+  --hairline: color-mix(in oklab, var(--ink) 14%, var(--paper));
+
+  --font-display: "Fraunces", "Iowan Old Style", Georgia, serif;
+  --font-body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  --wrap: min(72rem, 100% - 2 * clamp(1.25rem, 4vw, 3rem));
+  --section-pad: clamp(4.5rem, 9vw, 8rem);
+
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ---------- Reset ---------- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+ul,
+ol,
+figure {
+  margin: 0;
+}
+
+ul,
+ol {
+  padding: 0;
+  list-style: none;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+}
+
+a {
+  color: inherit;
+  text-decoration-color: color-mix(in oklab, var(--accent) 55%, transparent);
+  text-underline-offset: 0.18em;
+}
+
+a:hover {
+  color: var(--accent-ink);
+  text-decoration-color: var(--accent);
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--paper);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* ---------- Utilities ---------- */
+
+.wrap {
+  width: var(--wrap);
+  margin-inline: auto;
+}
+
+.section {
+  padding-block: var(--section-pad);
+  border-top: 1px solid var(--hairline);
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.tnum {
+  font-variant-numeric: tabular-nums;
+}
+
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  z-index: 100;
+  padding: 0.6rem 1rem;
+  background: var(--ink);
+  color: var(--paper);
+  text-decoration: none;
+  font-size: 0.85rem;
+}
+
+.skip-link:focus-visible {
+  top: 1rem;
+}
+
+/* ---------- Shared editorial primitives ---------- */
+
+.eyebrow {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  display: flex;
+  align-items: baseline;
+  gap: 0.75em;
+}
+
+.eyebrow .index {
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-weight: 480;
+  font-size: clamp(2rem, 4.6vw, 3.5rem);
+  line-height: 1.08;
+  letter-spacing: -0.015em;
+  margin-top: 1.25rem;
+  max-width: 22ch;
+}
+
+.section-intro {
+  margin-top: 1.5rem;
+  max-width: 56ch;
+  color: var(--ink-soft);
+  font-size: clamp(1.05rem, 1.6vw, 1.2rem);
+}
+
+/* ---------- Reveal on scroll (armed by JS only when motion is OK) ---------- */
+
+[data-reveal].armed {
+  opacity: 0;
+  transform: translateY(16px);
+}
+
+[data-reveal].armed.is-revealed {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity 0.8s var(--ease-out),
+    transform 0.8s var(--ease-out);
+}
+
+/* ---------- Reduced motion ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

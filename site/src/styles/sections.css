@@ -1,0 +1,676 @@
+/* ------------------------------------------------------------------
+   Section styles — editorial light
+------------------------------------------------------------------- */
+
+/* ---------- Fixed header ---------- */
+
+.site-header {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 50;
+  background: var(--paper);
+}
+
+.site-header-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-block: 0.95rem;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.3s ease;
+}
+
+.site-header[data-scrolled] .site-header-inner {
+  border-bottom-color: var(--hairline);
+}
+
+.site-mark {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.1rem;
+  letter-spacing: -0.01em;
+  text-decoration: none;
+}
+
+.site-nav {
+  display: flex;
+  gap: 1.75rem;
+}
+
+.site-nav a {
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-decoration: none;
+  transition: color 0.25s ease;
+}
+
+.site-nav a:hover {
+  color: var(--ink);
+}
+
+.site-nav a[aria-current="true"] {
+  color: var(--accent-ink);
+}
+
+@media (max-width: 48rem) {
+  .site-nav a:not([data-nav="contact"]) {
+    display: none;
+  }
+}
+
+/* ---------- Hero ---------- */
+
+.hero {
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  padding-top: 6rem;
+  padding-bottom: 4rem;
+}
+
+.hero-eyebrow {
+  display: block; /* plain inline flow — flex scatters bare text nodes on wrap */
+  color: var(--muted);
+}
+
+.hero-name {
+  font-family: var(--font-display);
+  font-weight: 470;
+  font-size: clamp(2.9rem, 8.5vw, 6.5rem);
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+  margin-top: 1.75rem;
+}
+
+.hero-nickname {
+  font-style: italic;
+  font-weight: 380;
+  font-size: 0.6em;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.hero-tagline {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(1.3rem, 2.6vw, 1.9rem);
+  line-height: 1.38;
+  max-width: 36ch;
+  margin-top: 2.25rem;
+  color: var(--ink-soft);
+}
+
+.hero-stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 2rem;
+  margin: 4.5rem 0 0;
+  max-width: 58rem;
+}
+
+.hero-stats dd {
+  margin: 0;
+}
+
+.stat {
+  border-top: 1px solid var(--hairline);
+  padding-top: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.stat dt {
+  order: 2;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-top: 0.6rem;
+}
+
+.stat-value {
+  order: 1;
+  font-family: var(--font-display);
+  font-weight: 560;
+  font-size: clamp(2.1rem, 4.4vw, 3.4rem);
+  line-height: 1;
+  letter-spacing: -0.015em;
+}
+
+.hero-contact {
+  margin-top: 4.5rem;
+  color: var(--muted);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 0.9rem;
+  font-size: 0.95rem;
+}
+
+@media (max-width: 40rem) {
+  .hero-stats {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
+/* ---------- 01 Profile ---------- */
+
+.profile-lede {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(1.3rem, 2.6vw, 1.95rem);
+  line-height: 1.48;
+  letter-spacing: -0.005em;
+  margin-top: 2.5rem;
+  max-width: 58ch;
+}
+
+/* ---------- 02 Impact by numbers ---------- */
+
+.metrics-grid {
+  margin-top: 3.5rem;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 3rem 2rem;
+}
+
+@media (max-width: 64rem) {
+  .metrics-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.metric {
+  border-top: 1px solid var(--hairline);
+  padding-top: 1rem;
+}
+
+.metric-index {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.metric-value {
+  font-family: var(--font-display);
+  font-weight: 560;
+  font-size: clamp(2rem, 3.4vw, 3rem);
+  line-height: 1.05;
+  letter-spacing: -0.015em;
+  margin-top: 0.5rem;
+}
+
+.metric-label {
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-top: 0.5rem;
+}
+
+.metric-context {
+  color: var(--muted);
+  font-size: 0.88rem;
+  line-height: 1.5;
+  margin-top: 0.35rem;
+}
+
+/* ---------- 03 Signature case study ---------- */
+
+.case-stage {
+  margin-top: 3.5rem;
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  gap: clamp(2rem, 5vw, 5rem);
+  align-items: center;
+}
+
+@media (max-width: 56rem) {
+  .case-stage {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+}
+
+.case-visual {
+  min-width: 0;
+}
+
+.case-chart {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.gridline {
+  stroke: var(--hairline);
+  stroke-width: 1;
+}
+
+.axis-title {
+  fill: var(--muted);
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.axis-label {
+  fill: var(--muted);
+  font-family: var(--font-body);
+  font-size: 12px;
+}
+
+.case-curve {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 2.5;
+  stroke-linecap: round;
+}
+
+.case-area {
+  fill: var(--accent);
+  opacity: 0.07;
+}
+
+.anchor-dot {
+  fill: var(--accent);
+}
+
+.anchor-label {
+  fill: var(--ink);
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.beat-dot {
+  fill: var(--paper);
+  stroke: var(--accent);
+  stroke-width: 2;
+}
+
+/* staged state is applied by JS only when the scroll story runs */
+.case-chart.staged .beat-dot {
+  opacity: 0.25;
+  transition: opacity 0.3s ease;
+}
+
+.case-chart.staged .beat-dot.is-active {
+  opacity: 1;
+  fill: var(--accent);
+}
+
+.case-chart-note {
+  color: var(--muted);
+  font-size: 0.85rem;
+  margin-top: 1rem;
+  max-width: 46ch;
+}
+
+.case-beats {
+  display: flex;
+  flex-direction: column;
+  gap: 2.25rem;
+}
+
+.beat {
+  display: flex;
+  gap: 1.25rem;
+  align-items: flex-start;
+}
+
+.beats-staged .beat {
+  opacity: 0.32;
+  transition: opacity 0.4s ease;
+}
+
+.beats-staged .beat.is-active {
+  opacity: 1;
+}
+
+.beat-index {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  line-height: 1;
+  color: var(--muted);
+  border: 1px solid var(--hairline);
+  border-radius: 999px;
+  width: 2.75rem;
+  height: 2.75rem;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  transition:
+    color 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.beats-staged .beat.is-active .beat-index,
+.beat:hover .beat-index {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.beat h3 {
+  font-family: var(--font-display);
+  font-weight: 560;
+  font-size: 1.4rem;
+  letter-spacing: -0.01em;
+}
+
+.beat p {
+  color: var(--ink-soft);
+  margin-top: 0.35rem;
+  max-width: 36ch;
+}
+
+/* ---------- 04 Career timeline ---------- */
+
+.timeline {
+  margin-top: 3rem;
+  border-top: 1px solid var(--hairline);
+}
+
+.role {
+  border-bottom: 1px solid var(--hairline);
+}
+
+.role-toggle {
+  display: grid;
+  grid-template-columns: 9.5rem minmax(0, 1fr) auto;
+  gap: 1.5rem;
+  align-items: baseline;
+  width: 100%;
+  text-align: left;
+  padding: 2.25rem 0;
+}
+
+@media (max-width: 48rem) {
+  .role-toggle {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+
+  .role-years {
+    grid-column: 1 / -1;
+  }
+}
+
+.role-years {
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.role-heading {
+  display: block;
+}
+
+.role-company {
+  font-family: var(--font-display);
+  font-weight: 560;
+  font-size: clamp(1.5rem, 2.8vw, 2.2rem);
+  letter-spacing: -0.015em;
+  display: block;
+  transition: color 0.25s ease;
+}
+
+.role-toggle:hover .role-company {
+  color: var(--accent-ink);
+}
+
+.role-titles {
+  display: block;
+  color: var(--muted);
+  font-size: 0.95rem;
+  margin-top: 0.4rem;
+}
+
+.role-meta {
+  display: block;
+  color: var(--muted);
+  font-size: 0.85rem;
+  margin-top: 0.2rem;
+}
+
+.role-icon {
+  position: relative;
+  width: 1.1rem;
+  height: 1.1rem;
+  align-self: center;
+  flex-shrink: 0;
+}
+
+.role-icon::before,
+.role-icon::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  background: var(--ink);
+  transition: transform 0.35s var(--ease-out);
+}
+
+.role-icon::before {
+  width: 100%;
+  height: 1.5px;
+}
+
+.role-icon::after {
+  width: 1.5px;
+  height: 100%;
+}
+
+.role-toggle[aria-expanded="true"] .role-icon::after {
+  transform: scaleY(0);
+}
+
+/* Accordion panel — grid-rows animation; open by default so no-JS shows all */
+.role-panel {
+  display: grid;
+  grid-template-rows: 1fr;
+  transition: grid-template-rows 0.55s var(--ease-out);
+}
+
+html.js .role-panel:not([data-open]) {
+  grid-template-rows: 0fr;
+  visibility: hidden;
+  transition:
+    grid-template-rows 0.55s var(--ease-out),
+    visibility 0s linear 0.55s;
+}
+
+.role-panel-inner {
+  overflow: hidden;
+  min-height: 0;
+  display: grid;
+  gap: 2.25rem;
+}
+
+.role-panel-inner > .role-group {
+  padding-left: 11rem;
+}
+
+@media (max-width: 48rem) {
+  .role-panel-inner > .role-group {
+    padding-left: 0;
+  }
+}
+
+.role-group:first-child {
+  padding-top: 0.25rem;
+}
+
+.role-group:last-child {
+  padding-bottom: 2.5rem;
+}
+
+.role-group-title {
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent-ink);
+}
+
+.role-highlights li {
+  position: relative;
+  padding-left: 1.6rem;
+  margin-top: 0.9rem;
+  color: var(--ink-soft);
+  max-width: 70ch;
+}
+
+.role-highlights li::before {
+  content: "—";
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+}
+
+/* ---------- 05 Core expertise ---------- */
+
+.expertise-list {
+  margin-top: 3rem;
+  border-top: 1px solid var(--hairline);
+}
+
+.expertise-list li {
+  display: flex;
+  align-items: baseline;
+  gap: 1.5rem;
+  padding: 1.15rem 0;
+  border-bottom: 1px solid var(--hairline);
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(1.35rem, 2.6vw, 2rem);
+  letter-spacing: -0.01em;
+  transition:
+    opacity 0.35s ease,
+    padding-left 0.35s var(--ease-out);
+}
+
+.expertise-list li:hover {
+  padding-left: 0.75rem;
+}
+
+.expertise-list:hover > li:not(:hover) {
+  opacity: 0.38;
+}
+
+.expertise-index {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--accent);
+}
+
+/* ---------- 06 Education ---------- */
+
+.education-list {
+  margin-top: 3rem;
+  border-top: 1px solid var(--hairline);
+}
+
+.education-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 2rem;
+  padding: 1.6rem 0;
+  border-bottom: 1px solid var(--hairline);
+}
+
+.education-item h3 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 1.3rem;
+  letter-spacing: -0.01em;
+}
+
+.education-item p {
+  color: var(--muted);
+  font-size: 0.95rem;
+  margin-top: 0.25rem;
+}
+
+.education-years {
+  color: var(--muted);
+  font-size: 0.9rem;
+  flex-shrink: 0;
+}
+
+.additional {
+  margin-top: 3rem;
+  display: grid;
+  gap: 1rem;
+  max-width: 70ch;
+  color: var(--ink-soft);
+}
+
+.additional strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+/* ---------- 07 Contact ---------- */
+
+.contact-title {
+  font-family: var(--font-display);
+  font-weight: 470;
+  font-size: clamp(3rem, 8vw, 6rem);
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+  margin-top: 1.25rem;
+}
+
+.contact-links {
+  margin-top: 2.5rem;
+}
+
+.contact-email {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(1.4rem, 3.2vw, 2.3rem);
+  letter-spacing: -0.01em;
+  text-decoration: none;
+  background-image: linear-gradient(var(--accent), var(--accent));
+  background-size: 0% 2px;
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  transition:
+    background-size 0.5s var(--ease-out),
+    color 0.3s ease;
+  padding-bottom: 0.15em;
+}
+
+.contact-email:hover {
+  background-size: 100% 2px;
+}
+
+.contact-meta {
+  margin-top: 1.75rem;
+  color: var(--muted);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 0.9rem;
+  font-size: 0.95rem;
+}
+
+/* ---------- Footer ---------- */
+
+.site-footer {
+  border-top: 1px solid var(--hairline);
+}
+
+.site-footer-inner {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem 2rem;
+  padding-block: 2rem;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
